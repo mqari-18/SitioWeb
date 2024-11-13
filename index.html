@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Espinaca - Página Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icono.PNG" type="image/x-icon">
+    <style>
+        .carrusel {
+            width: 80%;
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .carrusel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 400%;
+        }
+        .carrusel-slide {
+            width: 100%;
+            flex: 1 0 100%;
+        }
+        .carrusel label {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .carrusel .prev {
+            left: 10px;
+        }
+        .carrusel .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Galería Espinaca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dibujos.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Galeria.html">Galería</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="carrusel">
+        <div class="carrusel-slides" id="carrusel-slides">
+            <div class="carrusel-slide"><img src="nath.jpeg" alt="Imagen 1" style="width: 25%;"></div>
+            <div class="carrusel-slide"><img src="spideralex.jpeg" alt="Imagen 2" style="width: 25%;"></div>
+            <div class="carrusel-slide"><img src="pareja.jpeg" alt="Imagen 3" style="width: 25%;"></div>
+            <div class="carrusel-slide"><img src="paul.jpeg" alt="Imagen 4" style="width: 25%;"></div>
+        </div>
+
+        <label class="prev" onclick="moverCarrusel(-1)">&#10094;</label>
+        <label class="next" onclick="moverCarrusel(1)">&#10095;</label>
+    </div>
+
+    <script>
+        let indiceActual = 0;
+
+        function moverCarrusel(direccion) {
+            const slides = document.getElementById("carrusel-slides");
+            const totalSlides = slides.children.length;
+            indiceActual = (indiceActual + direccion + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${indiceActual * 100}%)`;
+        }
+    </script>
+
+<div class="container my-5">
+    <h2 class="text-center">Sobre la autora</h2>
+    <p class="text-center">
+        Mariana Espinosa es una artista apasionada por el dibujo y la creación de personajes únicos. En esta página, podrás ver una muestra de su trabajo, que abarca desde personajes originales hasta fanart de sus influencias favoritas. Cada pieza refleja su estilo y creatividad.
+    </p>
+</div>
+
+    <section class="banner">
+        <div class="overlay">
+            <div class="container text-center text-white">
+                <h1 class="display-1">Bienvenidos a la Galería Espinaca</h1>
+                <p class="lead">Explora la obra artística de Mariana Espinosa Cubillo</p>
+                <a href="Galeria.html" class="btn btn-lg btn-light">Ver Galería</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-rlpKOlo64mwpKO9plCrDbgsI1puIYOPQ5g5UsQibQxloox5jTzPh8ZNuXoxp6vs4" crossorigin="anonymous"></script>
+</body>
+</html>
